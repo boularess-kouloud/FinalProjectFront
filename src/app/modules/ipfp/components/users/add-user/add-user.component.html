@@ -1,0 +1,91 @@
+<h2>➕ Ajouter un utilisateur</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="addUser()" class="user-form">
+    <div class="form-group">
+        <label for="username">Nom :</label>
+        <input id="username" type="text" formControlName="username" />
+        <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched" class="error">
+             Le nom est requis.😊
+        </div>
+    </div>chat
+
+    <div class="form-group">
+        <label for="email">Email :</label>
+        <input id="email" type="email" formControlName="email" />
+        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error">
+            Email invalide ou vide.
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="userForm.invalid">💾 Ajouter</button>
+</form>
+
+<style>
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .user-form {
+        width: 400px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #34495e;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s;
+    }
+
+    input:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+
+    button {
+        background-color: #27ae60;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #219150;
+    }
+
+    button:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+    }
+</style>
